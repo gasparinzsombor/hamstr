@@ -1,6 +1,6 @@
 # Hamstr
 
-A small instant messaging application created to showcase the features of Phoenix LiveView
+A small instant messaging application created to showcase the features of Phoenix LiveView.
 
 To start your Phoenix server:
 
