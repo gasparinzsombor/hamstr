@@ -1,0 +1,29 @@
+<h1>Register</h1>
+
+<.form let={f} for={@changeset} phx-change="validate" phx-submit="save" autocomplete="off">
+
+  <%= label f, :email %>
+  <%= email_input f, :email, required: true, phx_debounce: "blur" %>
+  <%= error_tag f, :email %>
+
+  <%= label f, :password %>
+  <%= password_input f, :password, required: true, value: input_value(f, :password) %>
+  <%= error_tag f, :password %>
+
+  <%= label f, :firstname %>
+  <%= text_input f, :firstname, required: true %>
+  <%= error_tag f, :firstname %>
+
+  <%= label f, :lastname %>
+  <%= text_input f, :lastname, required: true %>
+  <%= error_tag f, :lastname %>  
+
+  <div>
+    <%= submit "Register" %>
+  </div>
+</.form>
+
+<p>
+  <%= link "Log in", to: Routes.user_session_path(@socket, :new) %> |
+  <%= link "Forgot your password?", to: Routes.user_reset_password_path(@socket, :new) %>
+</p>

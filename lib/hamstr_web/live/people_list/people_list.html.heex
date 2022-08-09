@@ -1,0 +1,11 @@
+<ul class="people-list">
+    <%= for person <- @people do %>
+    
+        <li>
+            <a href="#" phx-click="select-person" phx-value-person-id={person.id}> 
+                <%= User.whole_name(person)  %>
+            </a>
+        </li>
+
+    <% end %>
+</ul>

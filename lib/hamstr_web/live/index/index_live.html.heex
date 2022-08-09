@@ -1,0 +1,5 @@
+<div class="row index">
+    <.live_component module={HamstrWeb.PeopleList} id="people-list" people={@people}/>
+
+    <.live_component module={HamstrWeb.ConversationLive} id="conversation" person={@selected_person} user={@user} messages={@messages}/>
+</div>

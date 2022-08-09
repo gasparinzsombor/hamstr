@@ -1,0 +1,26 @@
+<div class="column">
+    <h1> <%= Hamstr.Accounts.User.whole_name(@person) %> </h1>
+
+    <div class="messages">
+        <%= for message <- @messages do %>
+
+            <.live_component 
+              module={HamstrWeb.Conversation.MessageLive}
+              id={"message-#{message.id}"}
+              message={message}
+              is_my_message={message.sender_id == @user.id}/>
+        <% end %>
+    </div>
+
+    <div>
+        <.form let={f} for={@new_message} phx-submit="send-new-message" phx-target={@myself}>
+            
+            <%= text_input f, :content, placeholder: "Message", value: @text_input_value, autocomplete: "off" %>
+
+            <%= hidden_input f, :sender_id, value: @user.id %>
+            <%= hidden_input f, :receiver_id, value: @person.id %>
+
+            <%= submit "Send" %>
+        </.form> 
+    </div>
+</div>

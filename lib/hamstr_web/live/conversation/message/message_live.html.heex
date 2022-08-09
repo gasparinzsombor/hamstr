@@ -1,0 +1,6 @@
+<div class={make_classes(@is_my_message)}>
+    <p class="message-time"> <%= @message.inserted_at %> </p>
+    <div class="message-box">
+        <%= @message.content %>
+    </div>
+</div>
