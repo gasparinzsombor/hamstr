@@ -1,5 +1,5 @@
 <div class="column">
-    <h1> <%= Hamstr.Accounts.User.whole_name(@person) %> </h1>
+    <h1 id="conversation-header">Re: <%= Hamstr.Accounts.User.whole_name(@person) %></h1>
 
     <div class="messages">
         <%= for message <- @messages do %>
@@ -15,12 +15,12 @@
     <div>
         <.form let={f} for={@new_message} phx-submit="send-new-message" phx-target={@myself}>
             
-            <%= text_input f, :content, placeholder: "Message", value: @text_input_value, autocomplete: "off" %>
+            <%= text_input f, :content, placeholder: "Message", value: @text_input_value, autocomplete: "off", id: "new-message-text-input", disabled: not @loaded %>
 
             <%= hidden_input f, :sender_id, value: @user.id %>
             <%= hidden_input f, :receiver_id, value: @person.id %>
 
-            <%= submit "Send" %>
+            <%= submit "Send", id: "send-message-submit-button", disabled: not @loaded%>
         </.form> 
     </div>
 </div>

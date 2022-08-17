@@ -6,6 +6,10 @@ defmodule HamstrWeb.ConversationLive do
 
   @impl true
   def mount(socket) do
+    socket =
+      socket
+      |> assign(loaded: connected?(socket))
+
     {:ok, socket}
   end
 
@@ -24,6 +28,7 @@ defmodule HamstrWeb.ConversationLive do
 
   @impl true
   def handle_event("send-new-message", %{"message" => message_args}, socket) do
+    IO.inspect(message_args, label: "\n-=Send button pressed")
     socket = case Comms.create_message(message_args) do
       {:ok, message} ->
         send(self(), {:new_message_saved, message})

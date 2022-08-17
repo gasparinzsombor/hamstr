@@ -35,6 +35,7 @@ defmodule HamstrWeb.IndexLive do
       |> subscribe_to_conversation_pubsub()
       |> subscribe_to_flash_message_pubsub()
       |> assign_messages()
+      |> push_event("conversation-loaded", %{id: id})
 
     {:noreply, socket}
   end
